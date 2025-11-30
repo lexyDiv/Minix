@@ -28,12 +28,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
 
     },
-    time: {
-      type: DataTypes.BIGINT
-    },
-    data: {
-      type: DataTypes.TEXT
-    },
   }, {
     sequelize,
     modelName: 'Viewing',

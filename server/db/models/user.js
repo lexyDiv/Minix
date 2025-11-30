@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(DisLike, { foreignKey: "user_id" });
       this.hasMany(Message, { foreignKey: "user_id" });
       this.hasMany(Subscription, { foreignKey: "user_id" });
-      this.hasMany(Seeng, { foreignKey: "user_id" });
+    //  this.hasMany(Seeng, { foreignKey: "user_id" });
     }
   }
   User.init({
