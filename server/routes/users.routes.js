@@ -2,26 +2,46 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../db/models');
 const fakeState = require('../fakeDB/fakeUsers');
 const onlineList = require('../fakeDB/onlineList');
 
+const {
+  User
+} = require('../db/models');
+
+
 router.get('/', async (req, res) => {
   try {
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    // const id = 0;
 
-          const { user } = req.session;
-    // await User.destroy({ where: { email: 'papa-loh@mail.ru' } });
-    if (!user) {
-      req.session.destroy();
-      res.clearCookie('user_sid');
-      return res.json({ user: null });
-    }
+    // const user = await User.findOne({ where: id });
+    // console.log(user);
+    // return res.json({ user });
 
 
   } catch (error) {
-     return res.json({ message: error.message });
+
   }
 });
+
+// router.get('/', async (req, res) => {
+//   try {
+
+//           const { user } = req.session;
+//     // await User.destroy({ where: { email: 'papa-loh@mail.ru' } });
+
+//     if (!user) {
+//       req.session.destroy();
+//       res.clearCookie('user_sid');
+//       return res.json({ user: null });
+//     }
+
+
+//   } catch (error) {
+//      return res.json({ message: error.message });
+//   }
+// });
 
 router.post('/', async (req, res) => {
   const { name } = req.body;
