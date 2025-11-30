@@ -4,17 +4,17 @@ module.exports = {
   async up(queryInterface) {
     const usersData = [
       {
-        name: 'Boss',
+        name: 'Papa',
         pass: await bcrypt.hash('123', 10),
         logo: '',
       },
       {
-        name: 'Helper',
+        name: 'Mama',
         pass: await bcrypt.hash('123', 10),
         logo: '',
       },
       {
-        name: 'Loh',
+        name: 'Son',
         pass: await bcrypt.hash('123', 10),
         logo: '',
       },
