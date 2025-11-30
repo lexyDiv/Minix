@@ -9,11 +9,22 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      chat_id: {
-        type: Sequelize.INTEGER
+        chat_id: {
+        type: Sequelize.INTEGER,
+        references: {
+        model: 'Chats',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+        model: 'Users',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+
       },
       time: {
         type: Sequelize.BIGINT

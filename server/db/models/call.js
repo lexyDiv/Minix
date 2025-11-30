@@ -14,8 +14,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Call.init({
-    user_id: DataTypes.INTEGER,
-    time: DataTypes.BIGINT
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+
+    },
+    time: {
+      type: DataTypes.BIGINT
+    },
+    targetUser_id: {
+      type: DataTypes.INTEGER
+    },
+    status: {
+      type: DataTypes.TEXT
+    },
+    type: {
+      type: DataTypes.TEXT
+    },
+    data: {
+      type: DataTypes.TEXT
+    },
   }, {
     sequelize,
     modelName: 'Call',

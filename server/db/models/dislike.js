@@ -4,19 +4,33 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class DisLike extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+    static associate({ User, Message }) {
+      this.belongsTo(User, { foreignKey: "user_id" });
+      this.belongsTo(Message, { foreignKey: "message_id" });
     }
   }
   DisLike.init({
-    user_id: DataTypes.INTEGER,
-    message_id: DataTypes.INTEGER,
-    time: DataTypes.BIGINT
+      user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+        model: 'Users',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+
+      },
+      message_id: {
+        type: DataTypes.INTEGER,
+        references: {
+        model: 'Messages',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+
+      },
+      time: {
+        type: DataTypes.BIGINT
+      },
   }, {
     sequelize,
     modelName: 'DisLike',

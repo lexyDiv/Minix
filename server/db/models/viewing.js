@@ -3,18 +3,13 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Like extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class Viewing extends Model {
     static associate({ User, Message }) {
       this.belongsTo(User, { foreignKey: "user_id" });
       this.belongsTo(Message, { foreignKey: "message_id" });
     }
   }
-  Like.init({
+  Viewing.init({
       user_id: {
         type: DataTypes.INTEGER,
         references: {
@@ -22,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
       onDelete: 'CASCADE',
-
       },
       message_id: {
         type: DataTypes.INTEGER,
@@ -31,14 +25,10 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
       onDelete: 'CASCADE',
-
-      },
-      time: {
-        type: DataTypes.BIGINT
       },
   }, {
     sequelize,
-    modelName: 'Like',
+    modelName: 'Viewing',
   });
-  return Like;
+  return Viewing;
 };

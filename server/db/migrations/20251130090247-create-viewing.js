@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Calls', {
+    await queryInterface.createTable('Viewings', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,10 +10,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+        model: 'Users',
+        key: 'id',
       },
-      time: {
-        type: Sequelize.BIGINT
+      onDelete: 'CASCADE',
+      },
+      message_id: {
+        type: Sequelize.INTEGER,
+        references: {
+        model: 'Messages',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
       },
       createdAt: {
         allowNull: false,
@@ -26,6 +36,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Calls');
+    await queryInterface.dropTable('Viewings');
   }
 };
