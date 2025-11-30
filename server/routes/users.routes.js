@@ -14,10 +14,10 @@ const onlineList = require('../fakeDB/onlineList');
 router.get('/', async (req, res) => {
   try {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-    // const id = 0;
+     const id = 0;
 
-    // const user = await User.findOne({ where: id });
-    // console.log(user);
+     const user = await User.findOne();
+     console.log(user);
      return res.json({ user: null });
 
 

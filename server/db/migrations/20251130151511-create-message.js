@@ -1,0 +1,52 @@
+'use strict';
+/** @type {import('sequelize-cli').Migration} */
+module.exports = {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('Messages', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      chat_id: {
+        type: Sequelize.INTEGER
+      },
+      user_id: {
+        type: Sequelize.INTEGER
+      },
+      time: {
+        type: Sequelize.BIGINT
+      },
+      type: {
+        type: Sequelize.TEXT
+      },
+      status: {
+        type: Sequelize.TEXT
+      },
+      image: {
+        type: Sequelize.TEXT
+      },
+      data: {
+        type: Sequelize.TEXT
+      },
+      answear: {
+        type: Sequelize.TEXT
+      },
+      commentOnMessageId: {
+        type: Sequelize.INTEGER
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('Messages');
+  }
+};
