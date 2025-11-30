@@ -10,33 +10,45 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Message.init({
-      chat_id: {
-        type: DataTypes.INTEGER
+    chat_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Chats',
+        key: 'id',
       },
-      user_id: {
-        type: DataTypes.INTEGER
+      onDelete: 'CASCADE',
+
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
       },
-      time: {
-        type: DataTypes.BIGINT
-      },
-      type: {
-        type: DataTypes.TEXT
-      },
-      status: {
-        type: DataTypes.TEXT
-      },
-      image: {
-        type: DataTypes.TEXT
-      },
-      data: {
-        type: DataTypes.TEXT
-      },
-      answear: {
-        type: DataTypes.TEXT
-      },
-      commentOnMessageId: {
-        type: DataTypes.INTEGER
-      },
+      onDelete: 'CASCADE',
+
+    },
+    time: {
+      type: DataTypes.BIGINT
+    },
+    type: {
+      type: DataTypes.TEXT
+    },
+    status: {
+      type: DataTypes.TEXT
+    },
+    image: {
+      type: DataTypes.TEXT
+    },
+    data: {
+      type: DataTypes.TEXT
+    },
+    answear: {
+      type: DataTypes.TEXT
+    },
+    commentOnMessageId: {
+      type: DataTypes.INTEGER
+    },
   }, {
     sequelize,
     modelName: 'Message',

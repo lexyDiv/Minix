@@ -11,10 +11,22 @@ module.exports = (sequelize, DataTypes) => {
   }
   Subscription.init({
     user_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+
     },
     chat_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Chats',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+
     },
     time: {
       type: DataTypes.BIGINT

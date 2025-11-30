@@ -10,18 +10,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Viewing.init({
-      user_id: {
-        type: DataTypes.INTEGER
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
       },
-      message_id: {
-        type: DataTypes.INTEGER
+      onDelete: 'CASCADE',
+
+    },
+    message_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Messages',
+        key: 'id',
       },
-      time: {
-        type: DataTypes.BIGINT
-      },
-      data: {
-        type: DataTypes.TEXT
-      },
+      onDelete: 'CASCADE',
+
+    },
+    time: {
+      type: DataTypes.BIGINT
+    },
+    data: {
+      type: DataTypes.TEXT
+    },
   }, {
     sequelize,
     modelName: 'Viewing',

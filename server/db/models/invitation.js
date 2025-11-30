@@ -10,7 +10,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   Invitation.init({
     chat_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Chats',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+
     },
     time: {
       type: DataTypes.BIGINT

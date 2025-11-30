@@ -10,7 +10,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       chat_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Chats',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+
       },
       time: {
         type: Sequelize.BIGINT

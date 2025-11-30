@@ -10,15 +10,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   DisLike.init({
-      message_id: {
-        type: DataTypes.INTEGER
+    message_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Messages',
+        key: 'id',
       },
-      user_id: {
-        type: DataTypes.INTEGER
+      onDelete: 'CASCADE',
+
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
       },
-      time: {
-        type: DataTypes.BIGINT
-      },
+      onDelete: 'CASCADE',
+
+    },
+    time: {
+      type: DataTypes.BIGINT
+    },
   }, {
     sequelize,
     modelName: 'DisLike',
