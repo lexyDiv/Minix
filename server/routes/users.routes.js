@@ -7,6 +7,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const fakeState = require('../fakeDB/fakeUsers');
 const onlineList = require('../fakeDB/onlineList');
+const { where } = require('sequelize');
 
 
 
@@ -16,9 +17,9 @@ router.get('/', async (req, res) => {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
      const id = 0;
 
-     const user = await User.findOne();
+     const user = await User.findAll();
      console.log(user);
-     return res.json({ user: null });
+     return res.json({ user });
 
 
   } catch (error) {
