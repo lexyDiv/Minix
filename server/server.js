@@ -78,6 +78,7 @@ io.on('connection', (socket) => {
 
  serverConfig(app);
  app.use(cors());
+ app.use(express.static('public'));
 
  const mainRoutes = require('./routes/main.routes');
  const usersRoutes = require('./routes/users.routes');

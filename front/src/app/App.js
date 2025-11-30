@@ -2,23 +2,21 @@ import { useEffect } from 'react';
 import './App.css';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import axios from "axios";
+import { useState } from 'react';
+import { useStart } from '../hoocks/useStart';
+import Loading from '../components/widgets/loading/Loading';
 
 function App() {
 
-useEffect(() => {
-  axios.post('/users', { name: 'papa' })
-  .then(data => {
-    console.log(data);
-  })
-  .catch(err => {
-    console.log(err.message);
-  });
-}, []);
+  const [start, setStart] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useStart(setUser, setStart);
 
 
   return (
     <div className="App">
-     
+     {!start && <Loading/>}
     </div>
   );
 }
