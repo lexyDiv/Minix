@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
      const id = 0;
 
-     const user = await User.findAll();
+     const user = await User.findOne({ where: { id: 1, name: "Papa" } });
      console.log(user);
      return res.json({ user });
 
