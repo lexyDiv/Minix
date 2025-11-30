@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-extraneous-dependencies */
+const {
+  User, Message
+} = require('../db/models');
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const fakeState = require('../fakeDB/fakeUsers');
 const onlineList = require('../fakeDB/onlineList');
 
-const {
-  User
-} = require('../db/models');
+
 
 
 router.get('/', async (req, res) => {
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
 
     // const user = await User.findOne({ where: id });
     // console.log(user);
-    // return res.json({ user });
+     return res.json({ user: null });
 
 
   } catch (error) {
@@ -43,13 +44,13 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-router.post('/', async (req, res) => {
-  const { name } = req.body;
-  const user = fakeState.find((fakeUser) => fakeUser.name === name); // scan in DB!
-  if (user) {
-    return res.json(user);
-  }
-  return res.json({ message: 'No user !' });
-});
+// router.post('/', async (req, res) => {
+//   const { name } = req.body;
+//   const user = fakeState.find((fakeUser) => fakeUser.name === name); // scan in DB!
+//   if (user) {
+//     return res.json(user);
+//   }
+//   return res.json({ message: 'No user !' });
+// });
 
 module.exports = router;
