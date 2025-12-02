@@ -5,12 +5,12 @@ export async function useStart(setUser, setStart) {
     useEffect(() => {
         axios.get('/users')
             .then(res => {
-                console.log(res);
+               // console.log(res);
                 const { user, message } = res.data;
                 if (message) {
                     console.log(message);
                 }
-                console.log(user);
+               // console.log(user);
                 return setUser(user);
             })
             .catch(err => {

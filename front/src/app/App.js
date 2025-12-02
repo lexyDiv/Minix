@@ -5,6 +5,7 @@ import axios from "axios";
 import { useState } from 'react';
 import { useStart } from '../hoocks/useStart';
 import Loading from '../components/widgets/loading/Loading';
+import AccessibleIcon from '@mui/icons-material/Accessible';
 
 function App() {
 
@@ -17,6 +18,10 @@ function App() {
   return (
     <div className="App">
      {!start && <Loading/>}
+     {/* <div>
+      this is hz
+      <AccessibleIcon/>
+     </div> */}
     </div>
   );
 }
