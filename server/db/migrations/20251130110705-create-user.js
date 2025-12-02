@@ -30,6 +30,9 @@ module.exports = {
       time: {
         type: Sequelize.BIGINT
       },
+      socketId: {
+        type: Sequelize.TEXT
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

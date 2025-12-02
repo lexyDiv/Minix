@@ -9,6 +9,8 @@ import AccessibleIcon from '@mui/icons-material/Accessible';
 import { useSelector } from 'react-redux';
 import { Start } from '../components/widgets/start/Start';
 import { useSocket } from '../hoocks/useSocket';
+import { Basic } from '../components/sections/basic/Basic';
+import { Select } from '../components/sections/enter/select/Select';
 
 function App() {
 
@@ -21,8 +23,8 @@ function App() {
 
   return (
     <div className="App">
-     {!start && <Start/>}  
-     {loading && <Loading/>}
+      {!start ? <Start /> : user ? <Basic /> : <Select />}
+      {loading && <Loading />}
     </div>
   );
 }

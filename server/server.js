@@ -19,7 +19,7 @@ io.on('connection', (socket) => {
   })
   /////////////////////////////////////////////
   socket.on('IamOnline', (data) => {
-    console.log("IamOnline socketId : ", socket.id);
+   // console.log("IamOnline socketId : ", socket.id);
     iAmOnline(io, socket, data);
   });
   /////////////////////////////////////// => china

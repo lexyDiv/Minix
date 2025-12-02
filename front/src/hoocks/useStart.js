@@ -10,14 +10,13 @@ export async function useStart(setStart) {
     useEffect(() => {
         axios.get('/users')
             .then(res => {
-               // console.log(res);
-                const { user, message } = res.data;
-                if (message) {
-                    console.log(message);
-                } else {
+                const { user } = res.data;
+
+                if (user) {
                     socket.emit('IamOnline', user);
                 }
-                 dispatch({ type: "GET_USER", payload: user });
+
+                dispatch({ type: "GET_USER", payload: user });
             })
             .catch(err => {
                 console.log(err.message);
