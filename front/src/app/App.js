@@ -8,6 +8,7 @@ import Loading from '../components/widgets/loading/Loading';
 import AccessibleIcon from '@mui/icons-material/Accessible';
 import { useSelector } from 'react-redux';
 import { Start } from '../components/widgets/start/Start';
+import { useSocket } from '../hoocks/useSocket';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
   const { user } = useSelector((store) => store.user);
 
   useStart(setStart);
+  useSocket();
 
   return (
     <div className="App">

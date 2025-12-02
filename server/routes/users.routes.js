@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
   try {
 
       const { user } = req.session;
-      console.log(usersOnlineData);
+     // console.log(usersOnlineData);
     if (!user) {
       req.session.destroy();
       res.clearCookie('user_sid');
@@ -47,13 +47,13 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
-  const { name } = req.body;
-  const user = fakeState.find((fakeUser) => fakeUser.name === name); // scan in DB!
-  if (user) {
-    return res.json(user);
-  }
-  return res.json({ message: 'No user !' });
-});
+// router.post('/', async (req, res) => {
+//   const { name } = req.body;
+//   const user = fakeState.find((fakeUser) => fakeUser.name === name); // scan in DB!
+//   if (user) {
+//     return res.json(user);
+//   }
+//   return res.json({ message: 'No user !' });
+// });
 
 module.exports = router;

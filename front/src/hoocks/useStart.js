@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import socket from "../socket/socket";
 
 export async function useStart(setStart) {
 
@@ -13,8 +14,9 @@ export async function useStart(setStart) {
                 const { user, message } = res.data;
                 if (message) {
                     console.log(message);
+                } else {
+                    socket.emit('IamOnline', user);
                 }
-                console.log('here 1');
                  dispatch({ type: "GET_USER", payload: user });
             })
             .catch(err => {
@@ -23,7 +25,6 @@ export async function useStart(setStart) {
             .finally(() => {
                 setStart(true);
                 dispatch({ type: "SET_LOADING", payload: false });
-                console.log("here");
             });
     }, [setStart, dispatch]);
 }
