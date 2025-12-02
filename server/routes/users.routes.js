@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt');
 const fakeState = require('../fakeDB/fakeUsers');
 const onlineList = require('../fakeDB/onlineList');
 const { where, json } = require('sequelize');
+const usersOnlineData = require('../fakeDB/usersOnlineData');
 
 
 
@@ -31,7 +32,7 @@ router.get('/', async (req, res) => {
   try {
 
       const { user } = req.session;
-    
+      console.log(usersOnlineData);
     if (!user) {
       req.session.destroy();
       res.clearCookie('user_sid');

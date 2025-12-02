@@ -6,22 +6,21 @@ import { useState } from 'react';
 import { useStart } from '../hoocks/useStart';
 import Loading from '../components/widgets/loading/Loading';
 import AccessibleIcon from '@mui/icons-material/Accessible';
+import { useSelector } from 'react-redux';
+import { Start } from '../components/widgets/start/Start';
 
 function App() {
 
   const [start, setStart] = useState(false);
-  const [user, setUser] = useState(null);
+  const { loading } = useSelector((store) => store.loading);
+  const { user } = useSelector((store) => store.user);
 
-  useStart(setUser, setStart);
-
+  useStart(setStart);
 
   return (
     <div className="App">
-     {!start && <Loading/>}
-     {/* <div>
-      this is hz
-      <AccessibleIcon/>
-     </div> */}
+     {!start && <Start/>}  
+     {loading && <Loading/>}
     </div>
   );
 }
